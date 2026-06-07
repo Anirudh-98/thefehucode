@@ -26,7 +26,7 @@ export default function Footer() {
         <div className="lg:col-span-2 space-y-6">
           <Link href="/" className="transition-opacity hover:opacity-85 select-none relative w-44 h-11 flex items-center">
             <Image
-              src="/images/fehucode logo.png"
+              src="https://cdn.shopify.com/s/files/1/0918/8258/6410/files/fehucode_logo.png?v=1780845818"
               alt="The Fehu Code Logo"
               width={176}
               height={44}
