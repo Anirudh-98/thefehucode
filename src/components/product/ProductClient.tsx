@@ -164,7 +164,7 @@ export default function ProductClient({ initialProduct: product }: ProductClient
     
     // 1. Try to match by variant image
     if (selectedVariant?.image?.url) {
-      const idx = product.images.findIndex((img) => img.url === selectedVariant.image.url);
+      const idx = product.images.findIndex((img) => img.url === selectedVariant.image?.url);
       if (idx !== -1) {
         setActiveImageIndex(idx);
         return;
