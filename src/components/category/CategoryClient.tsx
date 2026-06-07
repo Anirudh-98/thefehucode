@@ -345,7 +345,7 @@ export default function CategoryClient({ category, initialSubcategory }: Categor
             {/* Product Grid (Right side) */}
             <div className="lg:col-span-3 space-y-12">
               {loading ? (
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                   {[...Array(6)].map((_, idx) => (
                     <div key={idx} className="animate-pulse space-y-4">
                       <div className="bg-brand-beige/50 aspect-[2/3] w-full" />
@@ -372,7 +372,7 @@ export default function CategoryClient({ category, initialSubcategory }: Categor
                 <>
                   <motion.div
                     layout
-                    className="grid grid-cols-2 md:grid-cols-3 gap-6"
+                    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
                   >
                     <AnimatePresence>
                       {filteredProducts.slice(0, visibleCount).map((product) => {

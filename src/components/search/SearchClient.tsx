@@ -85,7 +85,7 @@ export default function SearchClient({ initialQuery }: SearchClientProps) {
 
           {/* Results Grid */}
           {loading ? (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
               {[...Array(4)].map((_, idx) => (
                 <div key={idx} className="animate-pulse space-y-4">
                   <div className="bg-brand-beige/50 aspect-[2/3] w-full" />
@@ -118,7 +118,7 @@ export default function SearchClient({ initialQuery }: SearchClientProps) {
               </div>
             </div>
           ) : (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
               {products.map((product) => {
                 const hasMultipleImages = product.images.length > 1;
                 const primaryVariant = product.variants[0];

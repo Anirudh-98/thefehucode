@@ -207,7 +207,7 @@ export default function VideoReels() {
                 <video
                   ref={el => { videoRefs.current[reel.id] = el; }}
                   src={reel.videoUrl}
-                  poster={reel.posterUrl}
+                  preload="metadata"
                   loop
                   muted
                   playsInline
@@ -316,7 +316,7 @@ export default function VideoReels() {
                 <video
                   ref={modalVideoRef}
                   src={REELS_DATA[activeReelIndex].videoUrl}
-                  poster={REELS_DATA[activeReelIndex].posterUrl}
+                  preload="metadata"
                   loop
                   muted={isMuted}
                   playsInline

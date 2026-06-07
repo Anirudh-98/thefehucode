@@ -106,6 +106,34 @@ export default function ProductClient({ initialProduct: product }: ProductClient
   const [wishlisted, setWishlisted] = useState(false);
   const [backCategory, setBackCategory] = useState<string>("");
 
+  // Swipe controls
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      setActiveImageIndex((prev) => (prev + 1) % product.images.length);
+    } else if (isRightSwipe) {
+      setActiveImageIndex((prev) => (prev - 1 + product.images.length) % product.images.length);
+    }
+  };
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const lastCat = sessionStorage.getItem("fehucode_last_category");
@@ -261,7 +289,12 @@ export default function ProductClient({ initialProduct: product }: ProductClient
             </div>
 
             {/* Column 2: Big Image Display */}
-            <div className="col-span-12 md:col-span-10 relative aspect-[2/3] bg-white border border-brand-beige p-2.5 shadow-md overflow-hidden cursor-zoom-in">
+            <div 
+              className="col-span-12 md:col-span-10 relative aspect-[2/3] bg-white border border-brand-beige p-2.5 shadow-md overflow-hidden cursor-zoom-in"
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+            >
               <div
                 className="relative w-full h-full"
                 onClick={() => setIsZoomed(true)}
@@ -487,7 +520,7 @@ export default function ProductClient({ initialProduct: product }: ProductClient
               You May Also Like
             </h2>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
               {recommended.map((prod) => (
                 <div key={prod.id} className="bg-white border border-brand-beige/40 p-2.5 group relative luxury-glow flex flex-col justify-between">
                   <Link href={`/products/${prod.handle}`} className="block relative aspect-[2/3] w-full overflow-hidden bg-brand-beige/10">

@@ -158,12 +158,13 @@ export default function Navbar() {
             >
               <Search className="w-5 h-5" />
             </button>
-            <span
-              className="hidden md:block hover:text-brand-gold transition-colors p-1 cursor-not-allowed"
+            <Link
+              href="/account"
+              className="hidden md:block hover:text-brand-gold transition-colors p-1"
               aria-label="Account"
             >
               <User className="w-5 h-5" />
-            </span>
+            </Link>
             <button
               onClick={() => setIsCartOpen(true)}
               className="hover:text-brand-gold transition-colors p-1 relative flex items-center"
@@ -232,6 +233,9 @@ export default function Navbar() {
 
                   <Link href="/#brand-story" className="hover:text-brand-gold py-2 border-b border-brand-deep text-brand-ivory/60">
                     About Story
+                  </Link>
+                  <Link href="/account" className="hover:text-brand-gold py-2 border-b border-brand-deep text-brand-ivory/60">
+                    Account
                   </Link>
                   <span className="hover:text-brand-gold py-2 border-b border-brand-deep text-brand-ivory/60 cursor-not-allowed">
                     Journal
