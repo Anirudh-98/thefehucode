@@ -49,11 +49,13 @@ export async function GET() {
   }
 
   try {
+    const formattedToken = token.startsWith("shcat_") ? token : `shcat_${token}`;
+
     const response = await fetch(AUTH_CONFIG.GRAPHQL_ENDPOINT, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": token, // Direct access token without Bearer prefix
+        "Authorization": formattedToken, // Direct access token with shcat_ prefix, without Bearer prefix
       },
       body: JSON.stringify({ query: CUSTOMER_QUERY }),
     });
@@ -63,7 +65,7 @@ export async function GET() {
       console.warn("Shopify Customer Account GraphQL request failed:", errorText);
       return NextResponse.json({ 
         authenticated: true, 
-        error: "Failed to fetch profile from Shopify",
+        error: `Failed to fetch profile from Shopify (Status: ${response.status})`,
         details: errorText
       });
     }

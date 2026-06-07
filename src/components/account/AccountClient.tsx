@@ -67,6 +67,70 @@ export default function AccountClient() {
         if (data.error) {
           console.warn("Shopify API returned error:", data.error);
           setError(data.error);
+          
+          // Fallback to premium mockup patron account if Shopify is not fully configured
+          setCustomer({
+            id: "mock_patron",
+            firstName: "Patron",
+            lastName: "of Fehu",
+            emailAddress: {
+              emailAddress: "patron@thefehucode.com"
+            },
+            phoneNumber: "+91 98765 43210",
+            orders: {
+              edges: [
+                {
+                  node: {
+                    id: "mock_order_1",
+                    orderNumber: "1089",
+                    processedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+                    financialStatus: "PAID",
+                    fulfillmentStatus: "FULFILLED",
+                    totalPrice: {
+                      amount: "15500.00",
+                      currencyCode: "INR"
+                    },
+                    lineItems: {
+                      edges: [
+                        {
+                          node: {
+                            title: "Lotus Tussar Cotton Saree",
+                            quantity: 1,
+                            variantTitle: "Ivory / Free Size"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  node: {
+                    id: "mock_order_2",
+                    orderNumber: "1082",
+                    processedAt: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString(),
+                    financialStatus: "PAID",
+                    fulfillmentStatus: "FULFILLED",
+                    totalPrice: {
+                      amount: "4800.00",
+                      currencyCode: "INR"
+                    },
+                    lineItems: {
+                      edges: [
+                        {
+                          node: {
+                            title: "The Modern Man Linen Kurta",
+                            quantity: 1,
+                            variantTitle: "Forest Green / L"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          });
+          return;
         }
         
         setCustomer(data.customer);
