@@ -126,7 +126,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="transition-opacity hover:opacity-85 select-none relative w-32 h-9 flex items-center justify-center">
             <Image
-              src="https://cdn.shopify.com/s/files/1/0918/8258/6410/files/Fehu_Logo_bcf3a1dd-b83a-4878-af40-17938f3dfb66.png?v=1777647880"
+              src="/images/fehucode logo.png"
               alt="The Fehu Code Logo"
               width={128}
               height={35}
@@ -206,7 +206,7 @@ export default function Navbar() {
                 <div className="flex justify-between items-center">
                   <div className="relative w-28 h-7 flex items-center">
                     <Image
-                      src="https://cdn.shopify.com/s/files/1/0918/8258/6410/files/Fehu_Logo_bcf3a1dd-b83a-4878-af40-17938f3dfb66.png?v=1777647880"
+                      src="/images/fehucode logo.png"
                       alt="The Fehu Code Logo"
                       width={108}
                       height={27}
