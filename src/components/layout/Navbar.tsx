@@ -160,7 +160,7 @@ export default function Navbar() {
             </button>
             <Link
               href="/account"
-              className="hidden md:block hover:text-brand-gold transition-colors p-1"
+              className="hover:text-brand-gold transition-colors p-1"
               aria-label="Account"
             >
               <User className="w-5 h-5" />
